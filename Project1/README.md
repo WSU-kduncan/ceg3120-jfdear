@@ -1,13 +1,13 @@
 Setup:  
-Add a user - adduser testuser  
+Add a user - Command: adduser testuser, You can add a user to the AWS server by using the adduser command and then the name of the user.   
 
-Initialize a repo - git init --bare testreop3.git  
+Initialize a repo - Command: git init --bare testreop3.git, While logged in as the user you just created you can create git repository by using the command listed to create a bare repository with just the .git folder than you can clone from later.  
 
-permission - Ensure that the private key is writable and readable using chmod  
+permission - Ensure that the private key is writable and readable using chmod while logged in as the user. you can do this by doing chmod 600 key_name.pem.  
 
 On the local system make a config file in your .ssh folder to hold the private key information that can be used later on in the git clone command shown.  
 
-keys - Make sure that the newly created user has the AWS instance public key in there authorized key folder.  
+ssh keys - Make sure that the newly created user has the AWS instance public key in there .ssh/authorized key folder.  
 
 
 
