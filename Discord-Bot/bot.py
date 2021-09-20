@@ -29,25 +29,20 @@ async def on_message(message):
     if message.author == client.user:
         return
 
-    brooklyn_99_quotes = [
-        'I\'m the human form of the 💯 emoji.',
-        'Bingpot!',
-        (
-            'Cool. Cool cool cool cool cool cool cool, '
-            'no doubt no doubt no doubt no doubt.'
-        ),
+    deathnote_quotes = [
+        'L, did you know? Gods of death love apples' ,
+        'The human world is a boring place with boring people doing boring things.' ,
+        'Laws aren’t perfect, because humans who created laws aren’t perfect. It’s impossible to be perfect. However, the laws are evidence of the human’s struggle to be righteous.' ,
+        'Learn to treasure your life because unfortunately, it can be taken away from you anytime.' ,
+        'You can’t ever win if you’re always on the defensive. To win, you have to attack!' ,
+        'In This World, There Are Very Few People Who Actually Trust Each Other.' ,
+        'An Eye For An Eye, My Friend.' ,
+        'In The End, There Is No Greater Motivation Than Revenge.' ,
+
     ]
 
-    hitchhiker_quotes = [
-        'There is an art, it says, or rather, a knack to flying. The knack lies in learning how to throw yourself at the ground and miss.',
-        'It is a mistake to think you can solve any major problems just with potatoes.',
-        'In the beginning the Universe was created. This has made a lot of people very angry and been widely regarded as a bad move.',
-        'A common mistake that people make when trying to design something completely foolproof is to underestimate the ingenuity of complete fools.',
-    ]
-
-    if message.content == 'towel!':
-        #response = random.choice(brooklyn_99_quotes)
-        response = random.choice(hitchhiker_quotes)
+    if message.content == '!dnote':
+        response = random.choice(deathnote_quotes)
         await message.channel.send(response)
 
 client.run(TOKEN)
