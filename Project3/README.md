@@ -37,7 +37,7 @@ Instance type is t2.micro
 ![image](https://user-images.githubusercontent.com/77360294/137036175-6d2c78df-1c62-433e-bc7c-ce9d50437463.png)  
   
 8. Instance details  
-![image](https://user-images.githubusercontent.com/77360294/137036352-d788da5e-e587-4f8a-834c-4a461dceb501.png)  
+![image](https://user-images.githubusercontent.com/77360294/137062644-38ed9b79-3c5b-43aa-a2a4-c5499f8f9841.png)   
   
 9. How to change hostname?  
 You have to first sudo vim /etc/hostname and put your new hostname in there.  
