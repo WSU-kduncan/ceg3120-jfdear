@@ -1,5 +1,5 @@
 Part 1  
-VPC - It is the Virtual Private Cloud, it is the virtual network dedicated to your AWS account and can have multiple of these. It includes the Subnet, Internet gateway, Route Table, Security groups, and CIDR block. It is all that working together.  
+VPC - It is the Virtual Private Cloud, it is the virtual network dedicated to your AWS account and can have multiple of these. It includes the Subnet, Internet gateway, Route Table, Security groups, and CIDR block. It is all that working together. Creates a range of private IPs for the VPC to use.  
 ![image](https://user-images.githubusercontent.com/77360294/137032092-2ea3124f-05ca-4650-a61c-55a01b401248.png)  
 Subnet - A range of IP addresses in your VPC  
 ![image](https://user-images.githubusercontent.com/77360294/137032296-167eae5d-c02c-4ab5-a19c-40b82bb7e9f7.png)  
