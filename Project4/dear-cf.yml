@@ -6,14 +6,6 @@ Parameters:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: 'AWS::EC2::KeyPair::KeyName'
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
-  SSHLocation:
-    Description: ' The IP address range that can be used to access the EC2 instance'
-    Type: String
-    MinLength: '9'
-    MaxLength: '18'
-    Default: 0.0.0.0/0
-    AllowedPattern: '(\d{1,3})\.(\d{1,3})\.(\d{1,3})\.(\d{1,3})/(\d{1,2})'
-    ConstraintDescription: must be a valid IP CIDR range of the form x.x.x.x/x.
 Mappings:
   AWSInstanceType2Arch:  # Supported architectures (x64bit only)
     t2.micro:
@@ -127,8 +119,8 @@ Resources:
             #!/bin/bash -xe
             apt-get update && \
             apt-get install -y \
-            git  \
-            python3-dev  \
-            python3-pip && \
-            hostnamectl set-hostname newHostName && \
+              git  \
+              python3-dev  \
+              python3-pip && \
+              hostnamectl set-hostname newHostName && \
             reboot
