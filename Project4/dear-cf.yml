@@ -86,7 +86,7 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 10.0.0.0/16 # current vpc until I fix the configuration for it
+          CidrIp: 10.0.0.0/16 # instances within the VPC
   PublicUbuntuInstance:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
