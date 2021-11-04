@@ -187,7 +187,7 @@ Resources:
         - Key: Application
           Value: !Ref 'AWS::StackId'
         - Key: Name
-          Value: webserv1
+          Value: webserv2
       NetworkInterfaces:
         - GroupSet:
             - !Ref Lab1SecurityGroup
