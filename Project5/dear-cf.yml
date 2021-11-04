@@ -170,7 +170,7 @@ Resources:
             apt-get install -y git && \
             hostnamectl set-hostname webServer1 && \ # give it a hostname - hostnamectl  && \
             reboot
-WebServ2Instance:
+  WebServ2Instance:
     Type: 'AWS::EC2::Instance'
     DependsOn: AttachGateway
     Properties:
