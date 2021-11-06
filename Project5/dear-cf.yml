@@ -1,12 +1,11 @@
 AWSTemplateFormatVersion: 2010-09-09
 Description: >-
-   Creates 3 instances and 1 VPC.  Each instance gets a private ip address.  1 instance gets an elastic IP address.
+   Creates 3 instances and 1 VPC.  Each instance gets a private IP and is pre-installed with required software.  Each instance also has a public / elastic IP because we can't create NAT gateways...
 Parameters:
   KeyName:
     Description: Name of an existing EC2 KeyPair to enable SSH access to the instance
     Type: 'AWS::EC2::KeyPair::KeyName'
     ConstraintDescription: must be the name of an existing EC2 KeyPair.
-  # This SSHLocation could go.
 Mappings:
   AWSInstanceType2Arch:  # Supported architectures (x64bit only)
     t2.micro:
@@ -72,6 +71,19 @@ Resources:
     Properties:
       Domain: vpc
       InstanceId: !Ref PublicUbuntuInstance
+  Web1IPAddress:
+    Type: 'AWS::EC2::EIP'
+    DependsOn: AttachGateway
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref WebServ1Instance
+  # Create one more elastic IP for the last instance
+  Web2IPAddress:
+    Type: 'AWS::EC2::EIP'
+    DependsOn: AttachGateway
+    Properties:
+      Domain: vpc
+      InstanceId: !Ref WebServ2Instance
   Lab1SecurityGroup:
     Type: 'AWS::EC2::SecurityGroup'
     Properties:
@@ -89,8 +101,8 @@ Resources:
         - IpProtocol: tcp
           FromPort: '22'
           ToPort: '22'
-          CidrIp: 74.140.215.244/32  # home IP
-          #HTTP rules below
+          CidrIp: 74.140.215.244/32  # Replace with home / trusted public IP
+          # Need more rules for port 80
         - IpProtocol: tcp
           FromPort: '80'
           ToPort: '80'
@@ -99,6 +111,7 @@ Resources:
           FromPort: '80'
           ToPort: '80'
           CidrIp: 10.0.0.0/16 # within the VPC
+
   # This defines one instance.  Make two more instances based on this (but no elastic IP)        
   PublicUbuntuInstance:
     Type: 'AWS::EC2::Instance'
@@ -156,7 +169,7 @@ Resources:
       NetworkInterfaces:
         - GroupSet:
             - !Ref Lab1SecurityGroup
-          AssociatePublicIpAddress: 'false'
+          AssociatePublicIpAddress: 'true'
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
@@ -191,7 +204,7 @@ Resources:
       NetworkInterfaces:
         - GroupSet:
             - !Ref Lab1SecurityGroup
-          AssociatePublicIpAddress: 'false'
+          AssociatePublicIpAddress: 'true'
           DeviceIndex: '0'
           DeleteOnTermination: 'true'
           SubnetId: !Ref Subnet
