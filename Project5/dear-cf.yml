@@ -144,12 +144,8 @@ Resources:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            apt-get install -y \
-              haproxy \ # need to install haproxy
-              git \
-              python3-dev \
-              python3-pip && \
-              hostnamectl set-hostname proxy && \
+            apt-get install -y haproxy git python3-dev python3-pip && \ # need to install haproxy
+            hostnamectl set-hostname proxy && \
             reboot
   WebServ1Instance:
     Type: 'AWS::EC2::Instance'
@@ -182,10 +178,8 @@ Resources:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            apt-get install -y \
-              apache2 \ # need to install apache or nginx
-              git && \
-              hostnamectl set-hostname webServer1 && \ # give it a hostname - hostnamectl  && \
+            apt-get install -y apache2 git && \ # need to install apache or nginx
+            hostnamectl set-hostname webServer1 && \ # give it a hostname - hostnamectl  && \
             reboot
   WebServ2Instance:
     Type: 'AWS::EC2::Instance'
@@ -218,8 +212,6 @@ Resources:
           !Sub |
             #!/bin/bash -xe
             apt-get update && \
-            apt-get install -y \
-              apache2 \ # need to install apache or nginx
-              git && \
-              hostnamectl set-hostname webServer2 && \ # give it a hostname - hostnamectl  && \
+            apt-get install -y apache2 git && \ # need to install apache or nginx
+            hostnamectl set-hostname webServer2 && \ # give it a hostname - hostnamectl  && \
             reboot
