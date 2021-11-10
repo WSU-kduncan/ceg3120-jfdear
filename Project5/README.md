@@ -17,8 +17,7 @@ sudo apt-get update
 apt-get install -y haproxy git python3 python3-pip  
   
 what files were modified and location -  
-file - hapee-lb.cfg  
-location - /etc/haproxy/haproxy.cfg  
+/etc/haproxy/haproxy.cfg  
   
 What configuration(s) were set -  
 ![haproxy_config](https://user-images.githubusercontent.com/77360294/141202499-916a0049-f17b-4a4b-addd-29a6bc6a86f8.PNG)    
